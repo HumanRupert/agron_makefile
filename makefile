@@ -1,10 +1,3 @@
-# Update these variables to match your repository.
-
-NAME=agron_*
-PORT=80*
-AWS_ID=203976053147
-AWS_REGION=eu-west-1
-
 # DO NOT UPDATE THE FOLLOWING COMMANDS. If you want to change commands, run `make update-tools`
 
 docker-build:
@@ -59,8 +52,8 @@ endif
 
 	make lambda-invoke
 
-update-tools: ## update-tools: Update this Makefile.
-	@curl -sL  https://raw.githubusercontent.com/akhtariali/agron_makefile/master/makefile > n.Makefile
-	@read -p "Updated tools from $(VERSION) to $(LATEST).  Do you want to commit and push? [y/N] " Y;\
-	if [ "$$Y" == "y" ]; then git add n.Makefile && git commit -m "[min] Updated tools" && git push origin HEAD; fi
+update-tools:
+	@curl -sL  https://raw.githubusercontent.com/akhtariali/agron_makefile/master/makefile > include.Makefile.mk
+	@read -p "Updated tools.  Do you want to commit and push? [y/N] " Y;\
+	if [ "$$Y" == "y" ]; then git add n.Makefile && git commit -m "[min] Updated tools" && git push; fi
 	@$(DONE)
