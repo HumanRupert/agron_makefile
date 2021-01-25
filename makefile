@@ -32,7 +32,7 @@ docker-push:
 	docker push $(AWS_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(NAME)
 
 lambda-create:
-	aws lambda create-function --function-name $(NAME) --code ImageUri=$(AWS_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(NAME):latest --timeout 900 --package-type Image --role arn:aws:iam::$(AWS_ID):role/agron_sp500_adv_dec
+	aws lambda create-function --function-name $(NAME) --code ImageUri=$(AWS_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(NAME):latest --timeout 900 --package-type Image --role arn:aws:iam::$(AWS_ID):role/agron_data_collectors
 
 lambda-update:
 	aws lambda update-function-code --function-name $(NAME) --image-uri $(AWS_ID).dkr.ecr.$(AWS_REGION).amazonaws.com/$(NAME):latest
