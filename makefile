@@ -1,5 +1,10 @@
 # DO NOT UPDATE THE FOLLOWING COMMANDS. If you want to change commands, run `make update-tools`
 
+include main.Variables.mk
+
+AWS_REGION := $(if $(AWS_REGION),$(AWS_REGION),eu-west-1)
+AWS_ID := $(if $(AWS_ID),$(AWS_ID),203976053147)
+
 docker-build:
 	docker build -t $(NAME) .	
 	
