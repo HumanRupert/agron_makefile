@@ -58,7 +58,7 @@ endif
 	make lambda-invoke
 
 update-tools:
-	@curl -sL  https://raw.githubusercontent.com/akhtariali/agron_makefile/master/makefile > include.Makefile.mk
+	@curl -sL  https://raw.githubusercontent.com/akhtariali/agron_makefile/master/makefile > inc.Makefile.mk
 	@read -p "Updated tools.  Do you want to commit and push? [y/N] " Y;\
 	if [ "$$Y" == "y" ]; then git add n.Makefile && git commit -m "[min] Updated tools" && git push; fi
 	@$(DONE)
