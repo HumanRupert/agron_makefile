@@ -1,5 +1,3 @@
-# DO NOT UPDATE THE FOLLOWING COMMANDS. If you want to change commands, run `make update-tools`
-
 include inc.Variables.mk
 
 AWS_REGION := $(if $(AWS_REGION),$(AWS_REGION),eu-west-1)
@@ -17,7 +15,9 @@ docker-test:
 make-docker:
 	make docker-build
 	make docker-run
+ifeq ($(INVOKE),true)
 	make docker-test
+endif
 
 ecr-create:
 	aws ecr create-repository --repository-name $(NAME) --image-scanning-configuration scanOnPush=true
@@ -55,7 +55,9 @@ else
 		make lambda-update
 endif
 
+ifeq ($(INVOKE),true)
 	make lambda-invoke
+endif
 
 update-tools:
 	@curl -sL  https://raw.githubusercontent.com/akhtariali/agron_makefile/master/makefile > inc.Makefile.mk
